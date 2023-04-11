@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    environment {
+        fname = "kofi"
+        lname = "gifty"
+    }
+    stages {
+        stage ("stage 1") {
+            steps {
+                script {
+                    // An error will occure
+                    try {
+                        sh "absc"  
+                    }catch(e){
+
+                        // Handle an exception
+                        echo "${e}"
+                    }
+                }
+            }
+        }
+    }
+}

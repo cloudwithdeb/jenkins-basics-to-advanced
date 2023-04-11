@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        fname = "kofi"
+        lname = "gifty"
+    }
+    stages {
+        stage ("stage 1") {
+            steps {
+                script {
+                    if(env.fname == "ben") {
+                        echo "Its Ben"
+                    }else{
+                        echo "Its not Ben"
+                    }
+                }
+            }
+        }
+    }
+}

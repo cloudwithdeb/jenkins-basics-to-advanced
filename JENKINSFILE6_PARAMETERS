@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: "FirstName", defaultValue: "Evans", description: "")
+        choice(name: "city",  choices: ['one', "two", 'three', 'four', 'five'], description: '')
+    }
+
+    stages {
+        stage("parameters" ){
+            steps {
+                sh "echo ${params.FirstName}"
+                sh "echo ${params.city}"
+            }
+        }
+    }
+}

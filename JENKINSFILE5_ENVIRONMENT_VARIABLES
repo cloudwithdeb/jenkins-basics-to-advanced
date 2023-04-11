@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    //global variables
+    environment {
+        Username = "Benjamine"
+        Location = "Canada"
+        Age = 78
+    }
+
+    stages {
+        stage("test environment") {
+            steps {
+                echo "Hello ${Username}"
+                echo "I leave at ${Location}"
+                echo "I am ${Age} years old"
+            }
+        }
+
+        stage("Inner Environments"){
+            // Inner environment variableto over ride global variable
+            environment {
+                Username = "Mirabel"
+            }
+             steps {
+                echo "${Username}"
+            }
+        }
+    }
+
+}

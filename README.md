@@ -34,7 +34,6 @@ docker run --name jenkins-blueocean --restart=on-failure --detach \
   --volume jenkins-docker-certs:/certs/client:ro \
   cloudwithdeb/myjenkins:v1
 
-
 #5. Use this command to display the Jenkins Password
 docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
 

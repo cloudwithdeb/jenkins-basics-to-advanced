@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+    environment {
+        mail = "kofi@gmail.com"
+        branch = "master"
+    }
+
+    stages {
+
+        // This will trigger
+        stage("stage 1"){
+             when {
+                    environment name: 'mail', value: "kofi@gmail.com"
+                }
+            steps {
+               echo "It will trigger this pipeline since it matches it."
+            }
+        }
+
+        // This wont trigger
+        stage("stage 2"){
+             when {
+                    environment name: 'mail', value: "king@gmail.com"
+                }
+            steps {
+               echo "This pipeline won't trigger."
+            }
+        }
+
+        // Trigger only if all conditions are meet
+         stage("stage 3"){
+             when {
+                    allOf{
+                        environment name: 'branch', value: "main"
+                        environment name: 'mail', value: "king@gmail.com"
+                    }
+                }
+            steps {
+               echo "This pipeline won't trigger."
+            }
+        }
+
+         // Trigger if one condition is meet
+         stage("stage 4"){
+             when {
+                    anyOf{
+                        environment name: "branch", value: "master"
+                        environment name: 'mail', value: "king@gmail.com"
+                    }
+                }
+            steps {
+               echo "This pipeline will trigger"
+            }
+        }
+    }
+}
