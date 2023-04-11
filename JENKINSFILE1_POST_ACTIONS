@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    stages {
+        stage("stage1") {
+            steps {
+                echo "Welcome to stage one (1)"
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "Run on always"
+        }
+
+        changed {
+            echo "Run when there are new changes"
+        }
+
+        success {
+            echo "Run when succedded"
+        }
+
+        unstable {
+            echo "Run when pipeline is unstanble"
+        }
+
+        failure {
+            echo "Run when a failure occures. Thank you!"
+        }
+    }
+}

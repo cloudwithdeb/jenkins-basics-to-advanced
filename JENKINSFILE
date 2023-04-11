@@ -1,10 +1,33 @@
 pipeline {
     agent any
     stages {
-        stage("build") {
+        stage('build') {
             steps {
-                echo "Hello Justice Owusu Boateng"
+                echo ""
             }
         }
     }
+
+    post {
+        always {
+
+        }
+        success {
+
+        }
+
+        failure {
+
+        }
+
+        unstable {
+
+        }
+
+        changed {
+
+        }
+    }
 }
+
+// asfuc -- fucas
